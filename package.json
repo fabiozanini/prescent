@@ -1,12 +1,15 @@
 {
- "name": "prescent",
- "version": "0.0.1",
- "description": "Boilerplate code for revealjs and gulp",
- "license": "MIT",
- "repository": "https://github.com/iosonofabio/prescent.git",
- "author": "Fabio Zanini",
- "scripts": {
-  "start": "gulp"
- },
- "dependencies": {}
+  "name": "prescent",
+  "version": "0.0.1",
+  "description": "Boilerplate code for revealjs and gulp",
+  "license": "MIT",
+  "repository": "https://github.com/iosonofabio/prescent.git",
+  "author": "Fabio Zanini",
+  "scripts": {
+    "start": "gulp"
+  },
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "reveal.js": "^3.1.0"
+  }
 }
