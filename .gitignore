@@ -1,0 +1,17 @@
+node_modules
+*.log
+
+### /home/fabio/.gitignore-boilerplates/Global/vim.gitignore
+
+.*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist
+
+### /home/fabio/.gitignore-boilerplates/Global/Linux.gitignore
+
+.*
+!.gitignore
+*~
+
+
