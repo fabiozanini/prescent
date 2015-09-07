@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var fs = require('fs');
 var YAML = require('yamljs');
 var mustache = require('mustache');
@@ -5,7 +6,8 @@ var watch = require('glob-watcher');
 
 
 var paths = {
-  presentation: "./presentation/"
+  //presentation: "./presentation/"
+  presentation: process.cwd()+'/'
 }
 
 var build = function() {
@@ -33,7 +35,7 @@ console.log("Written file: "+paths.presentation+'index.html');
 build();
 
 // Watcher
-var watcher = watch(['./presentation/*', '!./presentation/index.html']);
+var watcher = watch([paths.presentation+'*', '!'+paths.presentation+'index.html']);
 watcher.on('change', function(evt) {
     console.log(evt);
     build();

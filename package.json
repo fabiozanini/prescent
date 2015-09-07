@@ -6,7 +6,7 @@
   "repository": "https://github.com/iosonofabio/prescent.git",
   "author": "Fabio Zanini",
   "scripts": {
-    "start": "node build.js"
+    "start": "node prescent.js"
   },
   "dependencies": {
     "glob-watcher": "^2.0.0",
