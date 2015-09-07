@@ -8,7 +8,7 @@ description: "My presentation"
 # DO NOT USE index.html! That is the output file!
 slides:
  - "slide1"
- - "thanks"
+ - "slide2"
 
 # To override the location of RevealJS
 #revealjs: "/my/custom/folder/" 

@@ -1,4 +1,5 @@
 build
+example/index.html
 node_modules
 *.log
 
