@@ -1,23 +1,17 @@
 {
   "name": "prescent",
   "version": "0.0.1",
-  "description": "Boilerplate code for revealjs and gulp",
+  "description": "Boilerplate code for revealjs and hot reload",
   "license": "MIT",
   "repository": "https://github.com/iosonofabio/prescent.git",
   "author": "Fabio Zanini",
   "scripts": {
-    "start": "gulp"
+    "start": "node build.js"
   },
   "dependencies": {
-    "gulp": "^3.9.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-connect": "^2.2.0",
-    "gulp-mustache": "^1.1.1",
-    "gulp-rename": "^1.2.2",
-    "jquery": "^2.1.4",
+    "glob-watcher": "^2.0.0",
     "mustache": "^2.1.3",
     "reveal.js": "^3.1.0",
-    "serve-static": "^1.10.0",
     "yamljs": "^0.2.3"
   }
 }

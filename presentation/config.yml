@@ -1,5 +1,14 @@
+author: "My Name"
+
+title: "My title"
+
+description: "My presentation"
+
 # List of slide files
+# DO NOT USE index.html! That is the output file!
 slides:
  - "slide1"
  - "thanks"
- 
+
+# To override the location of RevealJS
+#revealjs: "/my/custom/folder/" 
