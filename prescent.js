@@ -6,7 +6,7 @@ var watch = require('glob-watcher');
 
 
 var paths = {
-  //presentation: "./presentation/"
+  //presentation: "./example/"
   presentation: process.cwd()+'/'
 }
 
