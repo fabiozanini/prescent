@@ -4,11 +4,23 @@ title: "My title"
 
 description: "My presentation"
 
-# List of slide files
-# DO NOT USE index.html! That is the output file!
-slides:
- - "slide1"
- - "slide2"
-
 # To override the location of RevealJS
 #revealjs: "/my/custom/folder/" 
+
+# List of slide files
+slides:
+ - "slide1.html"
+ - "slide2.html"
+ - "slide3.html"
+
+output:
+ - "index.html"
+
+# Templates in the slides
+# NOTE: forbidden keys: author, title, description, inline, revealjs
+templates:
+ templating: "Mustache templates"
+
+inline:
+ logo: "../logo.svg"
+

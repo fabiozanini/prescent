@@ -13,21 +13,33 @@ var paths = {
 var build = function() {
     var config = YAML.load(paths.presentation+'config.yml'),
         slides = config.slides.map(function(x) {
-            return fs.readFileSync(paths.presentation+x+'.html', {'encoding': 'utf8'});
+            return fs.readFileSync(paths.presentation+x, {'encoding': 'utf8'});
         }).join('\n\n'),
         template = fs.readFileSync(paths.presentation+'template.mustache', {'encoding': 'utf8'}),
         view = {
+            revealjs: config.revealjs || __dirname+'/node_modules/reveal.js/',
             title: config.title,
             author: config.author,
             description: config.description,
-            revealjs: config.revealjs || __dirname+'/node_modules/reveal.js/',
+            inline: {}
         },
         partials = {
             slides: slides
-        },
-        rendered = mustache.render(template, view, partials);
+        };
+
+    // Add templates
+    for (var prop in config.templates)
+        if (config.templates.hasOwnProperty(prop))
+            view[prop] = config.templates[prop]
+
+    // Add inline files
+    for (var prop in config.inline)
+        if (config.inline.hasOwnProperty(prop))
+            view.inline[prop] = fs.readFileSync(paths.presentation+config.inline[prop], {'encoding': 'utf8'});
+
+    var rendered = mustache.render(template, view, partials);
     
-    fs.writeFileSync(paths.presentation+'index.html', rendered ,{'encoding': 'utf8'});
+    fs.writeFileSync(paths.presentation+config.output, rendered ,{'encoding': 'utf8'});
     console.log("Written file: "+paths.presentation+'index.html');
 };
 

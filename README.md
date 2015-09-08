@@ -16,3 +16,7 @@ Boilerplate code for presentations with [revealjs](http://lab.hakim.se/reveal-js
 2. From the folder containing `config.yml`, call `prescent` (or the absolute path
 to prescent if not in your `PATH`). Prescent watches changes in your source folder
 and recompiles as needed.
+
+### FEATURES
+- [Mustache](https://mustache.github.io/) templates in the slides
+- inline files (e.g. SVG, useful for [D3js](http://d3js.org/) manipulations)
