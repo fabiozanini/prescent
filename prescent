@@ -20,10 +20,12 @@ var build = function() {
             title: config.title,
             author: config.author,
             description: config.description,
-            slides: slides,
             revealjs: config.revealjs || __dirname+'/node_modules/reveal.js/',
         },
-        rendered = mustache.render(template, view);
+        partials = {
+            slides: slides
+        },
+        rendered = mustache.render(template, view, partials);
     
     fs.writeFileSync(paths.presentation+'index.html', rendered ,{'encoding': 'utf8'});
     console.log("Written file: "+paths.presentation+'index.html');
