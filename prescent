@@ -13,29 +13,42 @@ var paths = {
 var build = function() {
     var config = YAML.load(paths.presentation+'config.yml'),
         slides = config.slides.map(function(x) {
-            return fs.readFileSync(paths.presentation+x, {'encoding': 'utf8'});
+            // Ignore slides if the file has issues
+            try {
+                return fs.readFileSync(paths.presentation+x, {'encoding': 'utf8'});
+            } catch (err) {
+                console.log(err);
+                return '';
+            }
         }).join('\n\n'),
         template = fs.readFileSync(paths.presentation+'template.mustache', {'encoding': 'utf8'}),
         view = {
             revealjs: config.revealjs || __dirname+'/node_modules/reveal.js/',
-            title: config.title,
-            author: config.author,
-            description: config.description,
+            title: config.title || 'Title',
+            author: config.author || 'Author',
+            description: config.description || 'Description',
             inline: {}
         },
         partials = {
             slides: slides
-        };
+        },
+        output = config.output || 'index.html';
 
     // Add templates
-    for (var prop in config.templates)
-        if (config.templates.hasOwnProperty(prop))
-            view[prop] = config.templates[prop]
+    if (config.hasOwnProperty('templates'))
+        for (var prop in config.templates)
+            if (config.templates.hasOwnProperty(prop))
+                view[prop] = config.templates[prop]
 
     // Add inline files
-    for (var prop in config.inline)
-        if (config.inline.hasOwnProperty(prop))
-            view.inline[prop] = fs.readFileSync(paths.presentation+config.inline[prop], {'encoding': 'utf8'});
+    if (config.hasOwnProperty('inline'))
+        for (var prop in config.inline)
+            if (config.inline.hasOwnProperty(prop))
+                view.inline[prop] = fs.readFileSync(paths.presentation+config.inline[prop], {'encoding': 'utf8'});
+
+    // Output file
+    if (!config.hasOwnProperty('output'))
+        config.output = 'index.html'
 
     var rendered = mustache.render(template, view, partials);
     

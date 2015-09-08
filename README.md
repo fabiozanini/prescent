@@ -19,4 +19,5 @@ and recompiles as needed.
 
 ### FEATURES
 - [Mustache](https://mustache.github.io/) templates in the slides
+- normal file sourcing (e.g. PNG)
 - inline files (e.g. SVG, useful for [D3js](http://d3js.org/) manipulations)
