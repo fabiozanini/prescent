@@ -21,7 +21,8 @@ var build = function() {
                 return '';
             }
         }).join('\n\n'),
-        template = fs.readFileSync(paths.presentation+'template.mustache', {'encoding': 'utf8'}),
+        templateFn = config.template || 'template.mustache',
+        template = fs.readFileSync(paths.presentation+templateFn, {'encoding': 'utf8'}),
         view = {
             revealjs: config.revealjs || __dirname+'/node_modules/reveal.js/',
             title: config.title || 'Title',
@@ -35,10 +36,10 @@ var build = function() {
         output = config.output || 'index.html';
 
     // Add templates
-    if (config.hasOwnProperty('templates'))
-        for (var prop in config.templates)
-            if (config.templates.hasOwnProperty(prop))
-                view[prop] = config.templates[prop]
+    if (config.hasOwnProperty('view'))
+        for (var prop in config.view)
+            if (config.view.hasOwnProperty(prop))
+                view[prop] = config.view[prop]
 
     // Add inline files
     if (config.hasOwnProperty('inline'))

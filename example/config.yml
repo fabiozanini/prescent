@@ -13,13 +13,17 @@ slides:
  - "slide2.html"
  - "slide3.html"
  - "slide4.html"
+ - "thanks.html"
+
+template:
+ - "template.mustache"
 
 output:
  - "index.html"
 
 # Templates in the slides
 # NOTE: forbidden keys: author, title, description, inline, revealjs
-templates:
+view:
  templating: "Mustache templates"
 
 inline:
