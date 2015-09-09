@@ -1,5 +1,5 @@
 ## PRESCENT
-<p align="center"><img src ="logo.png" /></p>
+<p align="center"><img src ="example/logo.png" /></p>
 Boilerplate code for presentations with [revealjs](http://lab.hakim.se/reveal-js) and live reloading.
 
 ### INSTALL

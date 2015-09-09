@@ -6,8 +6,8 @@ var watch = require('glob-watcher');
 
 
 var paths = {
-  //presentation: "./example/"
-  presentation: process.cwd()+'/'
+  presentation: process.cwd()+'/',
+  output: 'index.html'
 }
 
 var build = function() {
@@ -32,8 +32,7 @@ var build = function() {
         },
         partials = {
             slides: slides
-        },
-        output = config.output || 'index.html';
+        };
 
     // Add templates
     if (config.hasOwnProperty('view'))
@@ -47,13 +46,9 @@ var build = function() {
             if (config.inline.hasOwnProperty(prop))
                 view.inline[prop] = fs.readFileSync(paths.presentation+config.inline[prop], {'encoding': 'utf8'});
 
-    // Output file
-    if (!config.hasOwnProperty('output'))
-        config.output = 'index.html'
-
     var rendered = mustache.render(template, view, partials);
     
-    fs.writeFileSync(paths.presentation+config.output, rendered ,{'encoding': 'utf8'});
+    fs.writeFileSync(paths.presentation+paths.output, rendered ,{'encoding': 'utf8'});
     console.log("Written file: "+paths.presentation+'index.html');
 };
 
@@ -61,7 +56,7 @@ var build = function() {
 build();
 
 // Watcher
-var watcher = watch([paths.presentation+'*', '!'+paths.presentation+'index.html']);
+var watcher = watch([paths.presentation+'*', '!'+paths.presentation+paths.output]);
 watcher.on('change', function(evt) {
     console.log(evt);
     build();

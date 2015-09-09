@@ -8,6 +8,7 @@ description: "My presentation"
 #revealjs: "/my/custom/folder/" 
 
 # List of slide files
+# NOTE: forbidden keys: index.html (it is the output)
 slides:
  - "slide1.html"
  - "slide2.html"
@@ -18,14 +19,11 @@ slides:
 template:
  - "template.mustache"
 
-output:
- - "index.html"
-
 # Templates in the slides
 # NOTE: forbidden keys: author, title, description, inline, revealjs
 view:
  templating: "Mustache templates"
 
 inline:
- logo: "../logo.svg"
+ logo: "logo.svg"
 
